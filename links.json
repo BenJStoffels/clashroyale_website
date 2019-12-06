@@ -1,0 +1,44 @@
+{
+    "base_url": "https://api.clashroyale.com/v1",
+    "clan": {
+        "main": "/clans",
+        "arguments": ["clantag"],
+        "search": "",
+        "clan-info": "/<clantag>",
+        "clan-war": "/<clantag>/warlog",
+        "clan-current-war": "/<clantag>/currentwar"
+    },
+    "player": {
+        "main": "/players",
+        "arguments": ["playertag"],
+        "player-info": "/<playertag>",
+        "next-chests": "/<playertag>/upcomingchests",
+        "battle-log": "/<playertag>/battlelog"
+    },
+    "tournaments": {
+        "main": "/tournaments",
+        "arguments": ["tournamenttag"],
+        "search": "",
+        "tournament-info": "/<tournamenttag>"
+    },
+    "rankings": {
+        "main": "/locations",
+        "arguments": ["locationid", "tournamenttag"],
+        "list": "",
+        "get-location": "/<locationid>",
+        "clan-ranking": "/<locationid>/rankings/clans",
+        "player-ranking": "/<locationid>/rankings/players",
+        "clanwar-ranking": "/<locationid>/rankings/clanwars",
+        "tournament-ranking": "/global/rankings/tournaments/<tournamenttag>"
+    },
+    "cards": {
+        "main": "/cards",
+        "arguments": [],
+        "list": ""
+    },
+    "globaltournaments": {
+        "main": "/globaltournaments",
+        "arguments": [],
+        "list": ""
+    }
+}

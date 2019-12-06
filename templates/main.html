@@ -1,0 +1,159 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="nav-scroller bg-white box-shadow">
+    <nav class="nav nav-underline">
+        <a class="nav-link active" href="#">Profile</a>
+        <a class="nav-link" href="#">Battles</a>
+        <a class="nav-link" href="#">Decks</a>
+        <a href="#" class="nav-link">Cards</a>
+        <a href="#" class="nav-link">Analytics</a>
+    </nav>
+</div>
+
+<main role="main" class="container">
+    <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-primary rounded box-shadow">
+        <img class="mr-3" src="{{ url_for('static', filename='imgs/badge.png') }}" alt="" width="48" height="48">
+        <div class="lh-100 mr-auto">
+            <h6 class="mb-0 text-white lh-100">{{ info['name'] }}</h6>
+            <small>{{ info['clan']['name'] }}</small>
+        </div>
+        <div class="lh-100">
+            <h6 class="mb-0 text-white lh-100">
+                <i class="fas fa-trophy"></i> {{ info['trophies'] }} | <i class="fas fa-medal"></i> {{ info['expLevel'] }}
+            </h6>
+            <small>{{ info['arena']['name'] }}</small>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="my-3 p-3 bg-white rounded box-shadow">
+                <h6 class="border-bottom border-gray pb-2 mb-0"><i class="fas fa-trophy"></i> TROPHIES</h6>
+                <div class="media text-muted pt-3">
+                    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                        <strong class="d-block text-gray-dark">Trophies: </strong>
+                        {{ info['trophies'] }}
+                    </p>
+                </div>
+                <div class="media text-muted pt-3">
+                    <p class="media-body pb-3 mb-0 small lh-150 border-bottom border-gray">
+                        <strong class="d-block text-gray-dark">Best Trophies:</strong>
+                        {{ info['bestTrophies'] }}
+                    </p>
+                </div>
+            </div>
+            <div class="my-3 p-3 bg-white rounded box-shadow">
+                <h6 class="border-bottom border-gray pb-2 mb-0"><i class="fas fa-archive"></i> SEASON</h6>
+                <div class="media text-muted pt-3">
+                    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                        <strong class="d-block text-gray-dark">Best Season: </strong>
+                        {% if info['leagueStatistics'] %}
+                        {{ info['leagueStatistics']['bestSeason']['trophies'] }}
+                        {% else %}
+                        Get 4000+ trophies to view statistics
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="media text-muted pt-3">
+                    <p class="media-body pb-3 mb-0 small lh-150 border-bottom border-gray">
+                        <strong class="d-block text-gray-dark">Previous Season:</strong>
+                        {% if info['leagueStatistics'] %}
+                        {{ info['leagueStatistics']['previousSeason']['trophies'] }}
+                        {% else %}
+                        Get 4000+ trophies to view statistics
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+            <div class="my-3 p-3 bg-white rounded box-shadow">
+                <h6 class="border-bottom border-gray pb-2 mb-0"><i class="fas fa-bolt"></i> CHALLENGE</h6>
+                <div class="media text-muted pt-3">
+                    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                        <strong class="d-block text-gray-dark">Max Wins: </strong>
+                        {{ info['challengeMaxWins'] }}
+                    </p>
+                </div>
+                <div class="media text-muted pt-3">
+                    <p class="media-body pb-3 mb-0 small lh-150 border-bottom border-gray">
+                        <strong class="d-block text-gray-dark">Cards Won:</strong>
+                        {{ info['challengeCardsWon'] }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="my-3 p-3 bg-white rounded box-shadow">
+                <h6 class="border-bottom border-gray pb-2 mb-0"><i class="fas fa-bomb"></i> BATTLES</h6>
+                <div class="media text-muted pt-3">
+                    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                        <strong class="d-block text-gray-dark">Wins: </strong>
+                        {{ info['wins'] }}
+                    </p>
+                </div>
+                <div class="media text-muted pt-3">
+                    <p class="media-body pb-3 mb-0 small lh-150 border-bottom border-gray">
+                        <strong class="d-block text-gray-dark">Losses:</strong>
+                        {{ info['losses'] }}
+                    </p>
+                </div>
+                <div class="media text-muted pt-3">
+                    <p class="media-body pb-3 mb-0 small lh-150 border-bottom border-gray">
+                        <strong class="d-block text-gray-dark">Three Crown Wins:</strong>
+                        {{ info['threeCrownWins'] }}
+                    </p>
+                </div>
+            </div>
+            <div class="my-3 p-3 bg-white rounded box-shadow">
+                <h6 class="border-bottom border-gray pb-2 mb-0"><i class="fas fa-users"></i> CLAN STATS</h6>
+                <div class="media text-muted pt-3">
+                    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                        <strong class="d-block text-gray-dark">War Day Wins: </strong>
+                        {{ info['warDayWins'] }}
+                    </p>
+                </div>
+                <div class="media text-muted pt-3">
+                    <p class="media-body pb-3 mb-0 small lh-150 border-bottom border-gray">
+                        <strong class="d-block text-gray-dark">Clan Cards Collected:</strong>
+                        {{ info['clanCardsCollected'] }}
+                    </p>
+                </div>
+                <div class="media text-muted pt-3">
+                    <p class="media-body pb-3 mb-0 small lh-150 border-bottom border-gray">
+                        <strong class="d-block text-gray-dark">Donations:</strong>
+                        {{ info['donations'] }}
+                    </p>
+                </div>
+            </div>
+            <div class="my-3 p-3 bg-white rounded box-shadow">
+                <h6 class="border-bottom border-gray pb-2 mb-0"><i class="fas fa-trophy"></i> LEAGUE SEASON</h6>
+                <div class="media text-muted pt-3">
+                    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                        <strong class="d-block text-gray-dark">Arena: </strong>
+                        {{ info['arena']['name'] }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Current Deck</h6>
+
+        <div class="row">
+            <div class="col"><img class="card-img" src="{{ info['currentDeck'][0]['iconUrls']['medium'] }}" alt=""></div>
+            <div class="col"><img class="card-img" src="{{ info['currentDeck'][1]['iconUrls']['medium'] }}" alt=""></div>
+            <div class="col"><img class="card-img" src="{{ info['currentDeck'][2]['iconUrls']['medium'] }}" alt=""></div>
+            <div class="col"><img class="card-img" src="{{ info['currentDeck'][3]['iconUrls']['medium'] }}" alt=""></div>
+        </div>
+        <div class="row">
+            <div class="col"><img class="card-img" src="{{ info['currentDeck'][4]['iconUrls']['medium'] }}" alt=""></div>
+            <div class="col"><img class="card-img" src="{{ info['currentDeck'][5]['iconUrls']['medium'] }}" alt=""></div>
+            <div class="col"><img class="card-img" src="{{ info['currentDeck'][6]['iconUrls']['medium'] }}" alt=""></div>
+            <div class="col"><img class="card-img" src="{{ info['currentDeck'][7]['iconUrls']['medium'] }}" alt=""></div>
+        </div>
+
+        <small class="d-block text-right mt-3">
+            <a href="#">Improve deck</a>
+        </small>
+    </div>
+</main>
+{% endblock %}
