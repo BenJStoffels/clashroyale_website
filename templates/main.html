@@ -15,7 +15,11 @@
         <img class="mr-3" src="{{ url_for('static', filename='imgs/badge.png') }}" alt="" width="48" height="48">
         <div class="lh-100 mr-auto">
             <h6 class="mb-0 text-white lh-100">{{ info['name'] }}</h6>
+            {% if info['clan'] %}
             <small>{{ info['clan']['name'] }}</small>
+            {% else %}
+            <small>no clan</small>
+            {% endif %}
         </div>
         <div class="lh-100">
             <h6 class="mb-0 text-white lh-100">
